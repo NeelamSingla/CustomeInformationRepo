@@ -15,9 +15,9 @@ namespace CustomerContactInformationService.Services
         /// <summary>
         /// get customer details by customer id
         /// </summary>
-        /// <param name="empId"></param>
+        /// <param name="ssn"></param>
         /// <returns></returns>
-        CustomerContactInformation GetCustomerDetailsById(int Id);
+        CustomerContactInformation GetCustomerDetailsBySSN(string ssn);
 
         /// <summary>
         ///  add edit customers
@@ -32,6 +32,6 @@ namespace CustomerContactInformationService.Services
         /// </summary>
         /// <param name="employeeId"></param>
         /// <returns></returns>
-        ResponseModel DeleteCustomer(int Id);
+        ResponseModel DeleteCustomer(string ssn);
     }
 }

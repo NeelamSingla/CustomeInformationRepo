@@ -34,16 +34,16 @@ namespace CustomerContactInformationService.Services
 
 
         /// <summary>
-        /// get employee details by employee id
+        /// get customer details by customer id
         /// </summary>
-        /// <param name="empId"></param>
+        /// <param name="ssn"></param>
         /// <returns></returns>
-        public CustomerContactInformation GetCustomerDetailsById(int id)
+        public CustomerContactInformation GetCustomerDetailsBySSN(string ssn)
         {
             CustomerContactInformation emp;
             try
             {
-                emp = _context.Find<CustomerContactInformation>(id);
+                emp = _context.Find<CustomerContactInformation>(ssn);
             }
             catch (Exception)
             {
@@ -63,11 +63,10 @@ namespace CustomerContactInformationService.Services
             ResponseModel model = new ResponseModel();
             try
             {
-                CustomerContactInformation _temp = GetCustomerDetailsById(customerModel.Id);
+                CustomerContactInformation _temp = GetCustomerDetailsBySSN(customerModel.SocialSecurityNumber);
                 if (_temp != null)
                 {
-                    _temp.Id = customerModel.Id;
-                    _temp.SocialSecurityNumber = customerModel.SocialSecurityNumber;
+                     _temp.SocialSecurityNumber = customerModel.SocialSecurityNumber;
                     _temp.EmailAddress = customerModel.EmailAddress;
                     _temp.PhoneNumber = customerModel.PhoneNumber;
                     _context.Update<CustomerContactInformation>(_temp);
@@ -94,12 +93,12 @@ namespace CustomerContactInformationService.Services
         /// </summary>
         /// <param name="employeeId"></param>
         /// <returns></returns>
-        public ResponseModel DeleteCustomer(int Id)
+        public ResponseModel DeleteCustomer(string ssn)
         {
             ResponseModel model = new ResponseModel();
             try
             {
-                CustomerContactInformation _temp = GetCustomerDetailsById(Id);
+                CustomerContactInformation _temp = GetCustomerDetailsBySSN(ssn);
                 if (_temp != null)
                 {
                     _context.Remove<CustomerContactInformation>(_temp);

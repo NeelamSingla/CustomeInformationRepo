@@ -49,11 +49,11 @@ namespace CustomerContactInformationService.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("[action]/id")]
-        public IActionResult GetCustomersById(int id)
+        public IActionResult GetCustomersById(string ssn)
         {
             try
             {
-                var employees = _customerService.GetCustomerDetailsById(id);
+                var employees = _customerService.GetCustomerDetailsBySSN(ssn);
                 if (employees == null)
                     return NotFound();
                 return Ok(employees);
@@ -92,11 +92,11 @@ namespace CustomerContactInformationService.Controllers
         /// <returns></returns>
         [HttpDelete]
         [Route("[action]")]
-        public IActionResult DeleteCustomer(int id)
+        public IActionResult DeleteCustomer(string ssn)
         {
             try
             {
-                var model = _customerService.DeleteCustomer(id);
+                var model = _customerService.DeleteCustomer(ssn);
                 return Ok(model);
             }
             catch (Exception)

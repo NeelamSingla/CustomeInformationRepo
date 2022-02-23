@@ -9,8 +9,9 @@ namespace CustomerContactInformationService.Models
     public class CustomerContactInformation
     {
         [Key]
-        public int Id { get; set; }
+        [Required]
         public string SocialSecurityNumber { get; set; }
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string EmailAddress { get; set; }
         public string PhoneNumber { get; set; }
     }
