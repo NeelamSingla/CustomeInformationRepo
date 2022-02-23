@@ -8,7 +8,7 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["CustomerContactInformationService.csproj", "."]
 RUN dotnet restore "./CustomerContactInformationService.csproj"
@@ -21,5 +21,5 @@ RUN dotnet publish "CustomerContactInformationService.csproj" -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "CustomerContactInformationService.dll"]
+COPY . .
+ENTRYPOINT ["CustomerContactInformationService", "CustomerContactInformationService.dll"]
