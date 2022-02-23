@@ -16,6 +16,9 @@ Docker Desktop Client
 
 
 It contains code to implement Customer Conatct Information API with CRUD operations. 
+
 It uses Entity Framework Core Code First approach. 
+
 It contains Test project to test the controller with Mock Data.
+
 It also includes Docker Image for multi platform and easy deployment.
