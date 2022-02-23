@@ -13,6 +13,7 @@ namespace CustomerContactInformationService.Models
         public string SocialSecurityNumber { get; set; }
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string EmailAddress { get; set; }
+        [Phone(ErrorMessage = "Invalid Phone Number")]
         public string PhoneNumber { get; set; }
     }
 }
